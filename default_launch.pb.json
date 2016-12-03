@@ -1,0 +1,32 @@
+{
+  "javaparams": [
+    {
+      "name": "-DCLOUD_LAUNCH_CONFIG",
+      "value": "AutomaticEngineStartupLaunchConfig"
+    }
+  ],
+
+  "flagz": [
+    {
+      "name": "entity_activator",
+      "value": "improbable.corelib.entity.CoreLibraryEntityActivator"
+    },
+    {
+      "name": "game_world_edge_length",
+      "value": "8000"
+    },
+    {
+      "name": "resource_based_config_name",
+      "value": "one-gsim-one-jvm"
+    }
+  ],
+
+  "worker_flagz": [
+    {
+      "worker_type": "gsim",
+      "flagz": [
+      ]
+    }
+  ]
+}
+

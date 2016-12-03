@@ -1,0 +1,26 @@
+{
+  "build_type": "unity",
+  "generate_build_scripts": true,
+  "launch": {
+	"client": {
+		"windows": {
+			"command": "./build/worker/UnityClient@Windows/UnityClient@Windows",
+			"arguments": ["+assetDatabaseStrategy", "Local", "+localAssetDatabasePath", "${IMPROBABLE_PROJECT_ROOT}/build/assembly", "+appName", "${IMPROBABLE_PROJECT_NAME}"]
+		},
+		"mac": {
+			"command": "open",
+			"arguments": ["-n", "./build/worker/UnityClient@Mac/UnityClient@Mac.app", "--args", "+assetDatabaseStrategy", "Local", "+localAssetDatabasePath", "${IMPROBABLE_PROJECT_ROOT}/build/assembly", "+appName", "${IMPROBABLE_PROJECT_NAME}"]
+		}
+	},
+	"fsim": {
+		"windows": {
+			"command": "./build/worker/UnityFSim@Windows/UnityFSim@Windows",
+			"arguments": ["+assetDatabaseStrategy", "Local", "+localAssetDatabasePath", "${IMPROBABLE_PROJECT_ROOT}/build/assembly", "+appName", "${IMPROBABLE_PROJECT_NAME}"]
+		},
+		"mac": {
+			"command": "open",
+			"arguments": ["./build/worker/UnityFSim@Mac/UnityFSim@Mac.app", "--args", "+assetDatabaseStrategy", "Local", "+localAssetDatabasePath", "${IMPROBABLE_PROJECT_ROOT}/build/assembly", "+appName", "${IMPROBABLE_PROJECT_NAME}"]
+		}
+	}
+  }
+}
