@@ -5,7 +5,7 @@
 
 - *Accompanying Tutorial*: [improbable.io/docs/latest/tutorials/pirates/lesson1](https://improbable.io/docs/latest/tutorials/pirates/lesson1)
 
-- *GitHub Repository*: [github.com/improbable-public/PiratesTutorial](https://github.com/improbable-public/PiratesTutorial)
+- *GitHub Repository*: [github.com/spatialos/PiratesTutorial](https://github.com/spatialos/PiratesTutorial)
 
 ---
 
