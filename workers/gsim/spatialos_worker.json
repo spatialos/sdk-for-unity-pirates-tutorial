@@ -1,5 +1,0 @@
-{
-  "build_type": "scala",
-  "build_assets": ["gsim"],
-  "generate_build_scripts": true
-}

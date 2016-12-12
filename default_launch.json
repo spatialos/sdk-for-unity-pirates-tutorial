@@ -1,0 +1,39 @@
+{
+  "template": "small",
+  "world": {
+    "chunkEdgeLengthMeters": 50,
+    "snapshots": {
+      "snapshotWritePeriodSeconds": 0
+    },
+    "dimensions": {
+      "xMeters": 8000,
+      "zMeters": 8000
+    },
+    "legacyFlags": [
+      {
+        "name": "load_snapshot_at_startup",
+        "value": "true"
+      },
+      {
+        "name": "snapshot_storage_type",
+        "value": "file"
+      },
+      {
+        "name": "snapshot_source_file",
+        "value": "snapshots/initial_world.snapshot"
+      }
+    ]
+  },
+  "workers": [
+  {
+    "worker_type": "UnityFSim",
+    "load_balancing": {
+        "static_hex_grid": {
+          "worker_radius_meters": 2500.0,
+          "grid_width": 2,
+          "grid_height": 2
+        }
+      }
+    }
+  ]
+}

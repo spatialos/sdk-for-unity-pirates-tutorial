@@ -1,0 +1,67 @@
+{
+  "build": {
+    "tasks_filename": "spatialos.client.build.json",
+    "generated_build_scripts_type": "unity"
+  },
+  "bridge": {
+    "worker_claim": {
+      "claims": [
+        "visual"
+      ]
+    },
+    "entity_interest": {
+      "range_entity_interest": {
+        "radius": 2
+      }
+    },
+    "streaming_query": [
+      {
+        "bounded_component_streaming_query": {
+          "component_name": "improbable.terrain.Terrain",
+          "radius": 2000
+        }
+      }
+    ],
+    "component_delivery": {
+      "default": "RELIABLE_ORDERED",
+      "checkoutAllInitially": true
+    }
+  },
+  "external": {
+    "default": {
+      "run_type": "EXECUTABLE",
+      "windows": {
+        "command": "build/worker/UnityClient@Windows/UnityClient@Windows.exe",
+        "arguments": [
+          "+assemblyName",
+          "local_assembly",
+          "+engineType",
+          "UnityClient",
+          "+infraServicesUrl",
+          "http://127.0.0.1:21000",
+          "+appName",
+          "${IMPROBABLE_PROJECT_NAME}",
+          "-logfile",
+          "external-default-client.log"
+        ]
+      },
+      "macos": {
+        "command": "open",
+        "arguments": [
+          "./build/worker/UnityClient@Mac/UnityClient@Mac.app",
+          "--args",
+          "+assemblyName",
+          "local_assembly",
+          "+engineType",
+          "UnityClient",
+          "+infraServicesUrl",
+          "http://127.0.0.1:21000",
+          "+appName",
+          "${IMPROBABLE_PROJECT_NAME}",
+          "-logfile",
+          "external-default-client.log"
+        ]
+      }
+    }
+  }
+}

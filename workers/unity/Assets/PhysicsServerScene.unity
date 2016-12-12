@@ -136,25 +136,30 @@ MonoBehaviour:
     Debugging:
       InfraServiceUrl: https://api.spatial.improbable.io
       Log4NetConfigXml: log4net-default.xml
-      ProtocolLoggingOnStartup: 0
+      ProtocolLoggingOnStartup: 1
       ProtocolLogMaxFileBytes: 104857600
       ProtocolLogPrefix: protocol-
-      ShowDebugTraces: 0
+      ShowDebugTraces: 1
       UseInstrumentation: 1
     Networking:
       Ip: 127.0.0.1
       LinkProtocol: 1
       Port: 7777
       RaknetHeartbeatTimeoutMillis: 60000
-      SteamAppId: 
+      ReceiveQueueCapacity: 32768
+      SendQueueCapacity: 16384
+      SteamToken: 
       TcpMultiplexLevel: 32
     SpatialOsApplication:
       AssemblyName: 
       DeploymentId: 
       DeploymentTag: prod
       EnginePlatform: 1
+      LoginToken: 
     Unity:
+      EntityCreationLimitPerFrame: 100
       UsePerInstanceAssetCache: 1
+      UsePrefabPooling: 0
 --- !u!114 &400685696
 MonoBehaviour:
   m_ObjectHideFlags: 0

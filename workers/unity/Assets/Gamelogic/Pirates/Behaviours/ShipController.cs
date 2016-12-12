@@ -1,25 +1,27 @@
-﻿using Improbable.Ship;
+using Improbable.Ship;
 using Improbable.Unity.Visualizer;
 using UnityEngine;
 
 namespace Assets.Gamelogic.Pirates.Behaviours
 {
+    // This MonoBehaviour will be enabled on both client and server-side workers
     public class ShipController : MonoBehaviour
     {
-        [Require] protected PlayerControlsReader PlayerControls;
+        // Inject access to the entity's ShipControls component
+        [Require] protected ShipControls.Reader ShipControlsReader;
 
         //Current speed (0-1 range)
         private float targetSpeed;
-        public float Speed { get; private set; }
+        public float currentSpeed { get; private set; }
 
         //Current steering value (-1 to 1 range)
         private float targetSteering;
-        public float Steering { get; private set; }
+        public float currentSteering { get; private set; }
 
         public void Update()
         {
-            var inputSpeed = PlayerControls.TargetSpeed;
-            var inputSteering = PlayerControls.TargetSteering;
+            var inputSpeed = ShipControlsReader.Data.targetSpeed;
+            var inputSteering = ShipControlsReader.Data.targetSteering;
 
             var delta = Time.deltaTime;
 
@@ -29,11 +31,11 @@ namespace Assets.Gamelogic.Pirates.Behaviours
 
             // Calculate the input-modified speed
             targetSpeed = Mathf.Clamp01(targetSpeed + delta * inputSpeed);
-            Speed = Mathf.Lerp(Speed, targetSpeed, Mathf.Clamp01(delta * 5f));
+            currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Mathf.Clamp01(delta * 5f));
 
             // Steering is affected by speed -- the slower the ship moves, the less maneuverable is the ship
-            targetSteering = Mathf.Clamp(targetSteering + delta * 6 * inputSteering * (0.1f + 0.9f * Speed), -1f, 1f);
-            Steering = Mathf.Lerp(Steering, targetSteering, delta * 5f);
+            targetSteering = Mathf.Clamp(targetSteering + delta * 6 * inputSteering * (0.1f + 0.9f * currentSpeed), -1f, 1f);
+            currentSteering = Mathf.Lerp(currentSteering, targetSteering, delta * 5f);
         }
     }
 }

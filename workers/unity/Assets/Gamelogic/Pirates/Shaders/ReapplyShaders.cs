@@ -4,6 +4,7 @@ using Improbable.Unity.Visualizer;
 
 namespace Assets.Gamelogic.Pirates.Shaders
 {
+    // Enable this MonoBehaviour on client workers only
     [EngineType(EnginePlatform.Client)]
     public class ReapplyShaders : MonoBehaviour
     {

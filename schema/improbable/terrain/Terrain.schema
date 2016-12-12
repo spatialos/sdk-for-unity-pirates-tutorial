@@ -1,0 +1,6 @@
+package improbable.terrain;
+
+component Terrain {
+    // Schema file ID, unique within the project
+    id = 1001;
+}

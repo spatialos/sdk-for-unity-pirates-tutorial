@@ -1,0 +1,158 @@
+{
+  "build": {
+    "tasks_filename": "spatialos.fsim.build.json",
+    "generated_build_scripts_type": "unity"
+  },
+  "bridge": {
+    "worker_claim": {
+      "claims": [
+        "physics"
+      ]
+    },
+    "entity_interest": {
+      "range_entity_interest": {
+        "radius": 2
+      }
+    },
+    "streaming_query": [
+      {
+        "bounded_component_streaming_query": {
+          "component_name": "improbable.terrain.Terrain",
+          "radius": 2000
+        }
+      }
+    ],
+    "component_delivery": {
+      "default": "RELIABLE_ORDERED",
+      "checkoutAllInitially": true
+    }
+  },
+  "managed": {
+    "run_type": "EXECUTABLE_ZIP",
+    "linux": {
+      "artifact_name": "UnityFSim@Linux.zip",
+      "command": "UnityFSim@Linux",
+      "arguments": [
+        "+appName",
+        "${IMPROBABLE_PROJECT_NAME}",
+        "+receptionistIp",
+        "${IMPROBABLE_RECEPTIONIST_IP}",
+        "+receptionistPort",
+        "${IMPROBABLE_RECEPTIONIST_PORT}",
+        "+engineType",
+        "${IMPROBABLE_WORKER_NAME}",
+        "+engineId",
+        "${IMPROBABLE_WORKER_ID}",
+        "+useInternalIpForBridge",
+        "true",
+        "+infraServicesUrl",
+        "${IMPROBABLE_API_URL}",
+        "+assemblyName",
+        "${IMPROBABLE_ASSEMBLY_NAME}",
+        "+linkProtocol",
+        "RakNet",
+        "-logfile",
+        "${IMPROBABLE_LOG_FILE}",
+        "-batchmode",
+        "-nographics"
+      ]
+    },
+    "windows": {
+      "artifact_name": "UnityFSim@Windows.zip",
+      "command": "UnityFSim@Windows.exe",
+      "arguments": [
+        "+appName",
+        "${IMPROBABLE_PROJECT_NAME}",
+        "+receptionistIp",
+        "${IMPROBABLE_RECEPTIONIST_IP}",
+        "+receptionistPort",
+        "${IMPROBABLE_RECEPTIONIST_PORT}",
+        "+engineType",
+        "${IMPROBABLE_WORKER_NAME}",
+        "+engineId",
+        "${IMPROBABLE_WORKER_ID}",
+        "+useInternalIpForBridge",
+        "true",
+        "+infraServicesUrl",
+        "${IMPROBABLE_API_URL}",
+        "+assemblyName",
+        "${IMPROBABLE_ASSEMBLY_NAME}",
+        "+linkProtocol",
+        "RakNet",
+        "-logfile",
+        "${IMPROBABLE_LOG_FILE}",
+        "-batchmode",
+        "-nographics"
+      ]
+    },
+    "macos": {
+      "artifact_name": "UnityFSim@Mac.zip",
+      "command": "UnityFSim@Mac.app/Contents/MacOS/UnityFSim@Mac",
+      "arguments": [
+        "+appName",
+        "${IMPROBABLE_PROJECT_NAME}",
+        "+receptionistIp",
+        "${IMPROBABLE_RECEPTIONIST_IP}",
+        "+receptionistPort",
+        "${IMPROBABLE_RECEPTIONIST_PORT}",
+        "+engineType",
+        "${IMPROBABLE_WORKER_NAME}",
+        "+engineId",
+        "${IMPROBABLE_WORKER_ID}",
+        "+useInternalIpForBridge",
+        "true",
+        "+infraServicesUrl",
+        "${IMPROBABLE_API_URL}",
+        "+assemblyName",
+        "${IMPROBABLE_ASSEMBLY_NAME}",
+        "+linkProtocol",
+        "RakNet",
+        "-logfile",
+        "${IMPROBABLE_LOG_FILE}",
+        "-batchmode",
+        "-nographics"
+      ]
+    }
+  },
+  "external": {
+    "default": {
+      "run_type": "EXECUTABLE",
+      "windows": {
+        "command": "build/worker/UnityFSim@Windows/UnityFSim@Windows.exe",
+        "arguments": [
+          "+assemblyName",
+          "local_assembly",
+          "+engineType",
+          "UnityFSim",
+          "+infraServicesUrl",
+          "http://127.0.0.1:21000",
+          "+appName",
+          "${IMPROBABLE_PROJECT_NAME}",
+          "-batchmode",
+          "-nographics",
+          "-logfile",
+          "external-default-fsim.log"
+        ]
+      },
+      "macos": {
+        "command": "open",
+        "arguments": [
+          "./build/worker/UnityFSim@Mac/UnityFSim@Mac.app",
+          "--args",
+          "+assemblyName",
+          "local_assembly",
+          "+engineType",
+          "UnityFSim",
+          "+infraServicesUrl",
+          "http://127.0.0.1:21000",
+          "+appName",
+          "${IMPROBABLE_PROJECT_NAME}",
+          "-batchmode",
+          "-nographics",
+          "-logfile",
+          "external-default-fsim.log"
+        ]
+      }
+    }
+  }
+}

@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using Improbable.Unity;
+using Improbable.Unity.Visualizer;
+using UnityEngine;
 
 namespace Assets.Gamelogic.Pirates.Camera
 {
+    // Enable this MonoBehaviour on client workers only
+    [EngineType(EnginePlatform.Client)]
     public class CameraVisualizer : MonoBehaviour
     {
         public Transform CameraRoot;

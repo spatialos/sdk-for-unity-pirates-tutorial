@@ -1,0 +1,31 @@
+package improbable.player;
+
+type DeletePlayerRequest {
+    // ID of player entity to be deleted
+    EntityId player_entity_id = 1;
+}
+
+type DeletePlayerResponse {}
+
+type HeartbeatRequest {
+    // ID of player entity sending a heartbeat
+    EntityId sender_entity_id = 1;
+}
+
+type HeartbeatResponse {}
+
+component PlayerLifecycle {
+    // Schema file ID, unique within the project
+    id = 1006;
+
+    // Facilitate player entity deletion after a timeout (e.g. client has crashed)
+    uint32 current_missed_heartbeats = 1;
+    uint32 max_missed_heartbeats = 2;
+    uint32 player_heartbeat_interval = 3;
+
+    // Allow clients to request deletion of their entity when they exit
+	command DeletePlayerRequest delete_player returns DeletePlayerResponse;
+
+    // Used by clients to indicate they are still connected
+    command HeartbeatRequest heartbeat returns HeartbeatResponse;
+}

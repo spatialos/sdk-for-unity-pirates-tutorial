@@ -1,0 +1,21 @@
+package improbable.player;
+
+type SpawnPlayerRequest {
+    // ID of client to whom spawned entity should be delegated
+    string client_id = 1;
+	// Initial position requested for new player entity
+    Coordinates initial_position = 2;
+}
+
+type SpawnPlayerResponse {
+    // ID of entity spawned for player
+    EntityId entity_id = 1;
+}
+
+component Spawner {
+    // Schema file ID, unique within the project
+    id = 1002;
+
+    // Used by clients on connection to request a ship is spawned for the player
+    command SpawnPlayerRequest spawn_player returns SpawnPlayerResponse;
+}

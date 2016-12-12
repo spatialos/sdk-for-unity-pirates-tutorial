@@ -1,20 +1,22 @@
-﻿using UnityEngine;
+﻿using Improbable.Ship;
+using Improbable.Unity;
+using Improbable.Unity.Visualizer;
+using UnityEngine;
 
 namespace Assets.Gamelogic.Pirates.Behaviours
 {
+    // Enable this MonoBehaviour on client workers only
+    [EngineType(EnginePlatform.Client)]
     public class SinkingBehaviour : MonoBehaviour
     {
         public Animation SinkingAnimation;
 
-        void OnEnable()
+        private void OnEnable()
         {
-            // Register your callbacks in OnEnable.
         }
 
-        void OnDisable()
+        private void OnDisable()
         {
-            // Deregister your callbacks and rewind animations inside OnDisable.
         }
-
     }
 }
