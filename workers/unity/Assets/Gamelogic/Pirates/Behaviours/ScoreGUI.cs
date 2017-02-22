@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace Assets.Gamelogic.Pirates.Behaviours
 {
     // Enable this MonoBehaviour on client workers only
-    [EngineType(EnginePlatform.Client)]
+    [WorkerType(WorkerPlatform.UnityClient)]
     public class ScoreGUI : MonoBehaviour
     {
         /* 

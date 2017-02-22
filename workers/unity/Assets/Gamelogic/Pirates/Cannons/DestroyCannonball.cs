@@ -1,4 +1,5 @@
 ﻿using Improbable;
+using Improbable.Collections;
 using UnityEngine;
 
 namespace Assets.Gamelogic.Pirates.Cannons
@@ -6,7 +7,7 @@ namespace Assets.Gamelogic.Pirates.Cannons
     public class DestroyCannonball : MonoBehaviour
     {
         public float SecondsUntilDestroy = 4f;
-        public EntityId firerEntityId = EntityId.InvalidEntityId;
+		public Option<EntityId> firerEntityId = new Option<EntityId>();
         private float spawnTime;
 
         void Start()

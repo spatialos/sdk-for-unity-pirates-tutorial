@@ -21,10 +21,10 @@ namespace Assets.EntityTemplates
 
             // Grant component access permissions
             var acl = Acl.Build()
-                .SetReadAccess(CommonPredicates.PhysicsOrVisual)
-                .SetWriteAccess<WorldTransform>(CommonPredicates.SpecificClientOnly(clientWorkerId))
-                .SetWriteAccess<ShipControls>(CommonPredicates.SpecificClientOnly(clientWorkerId))
-                .SetWriteAccess<PlayerLifecycle>(CommonPredicates.PhysicsOnly);
+                .SetReadAccess(CommonRequirementSets.PhysicsOrVisual)
+				.SetWriteAccess<WorldTransform>(CommonRequirementSets.SpecificClientOnly(clientWorkerId))
+				.SetWriteAccess<ShipControls>(CommonRequirementSets.SpecificClientOnly(clientWorkerId))
+				.SetWriteAccess<PlayerLifecycle>(CommonRequirementSets.PhysicsOnly);
             playerEntityTemplate.SetAcl(acl);
 
             return playerEntityTemplate;

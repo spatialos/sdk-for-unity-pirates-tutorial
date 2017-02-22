@@ -10,15 +10,15 @@ using UnityEditor;
 public class SnapshotMenu : MonoBehaviour
 {
     private static readonly string InitialWorldSnapshotPath = Application.dataPath +
-                                                              "/../../../snapshots/initial_world.snapshot";
+                                                              "/../../../snapshots/default.snapshot";
 
     [MenuItem("Improbable/Snapshots/Generate Snapshot Programmatically")]
     [UsedImplicitly]
     private static void GenerateSnapshotProgrammatically()
     {
         var snapshotEntities = new Dictionary<EntityId, SnapshotEntity>();
-        var currentEntityId = 0;
-        
+        var currentEntityId = 1;
+
         snapshotEntities.Add(new EntityId(currentEntityId++), TerrainEntityTemplate.GenerateTerrainSnapshotEntityTemplate());
         snapshotEntities.Add(new EntityId(currentEntityId++), PlayerSpawnerEntityTemplate.GeneratePlayerSpawnerSnapshotEntityTemplate());
 

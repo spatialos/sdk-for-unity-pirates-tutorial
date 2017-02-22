@@ -1,4 +1,6 @@
-#Improbable Unity Ignores
+# Improbable Unity Ignores
+.spatialos/
+spatialos_worker_packages.json
 build.json
 .invoke.log
 zip_toolbelt.log

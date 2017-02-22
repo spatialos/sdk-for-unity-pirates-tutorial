@@ -18,9 +18,9 @@ public class Bootstrap : MonoBehaviour
     {
         SpatialOS.ApplyConfiguration(Configuration);
 
-        switch (SpatialOS.Configuration.EnginePlatform)
+        switch (SpatialOS.Configuration.WorkerPlatform)
         {
-            case EnginePlatform.FSim:
+            case WorkerPlatform.UnityWorker:
                 SpatialOS.OnDisconnected += reason => Application.Quit();
 
                 var targetFramerate = 120;
@@ -29,7 +29,7 @@ public class Bootstrap : MonoBehaviour
                 Application.targetFrameRate = targetFramerate;
                 Time.fixedDeltaTime = 1.0f / fixedFramerate;
                 break;
-            case EnginePlatform.Client:
+            case WorkerPlatform.UnityClient:
                 SpatialOS.OnConnected += OnConnected;
                 break;
         }
@@ -50,7 +50,7 @@ public class Bootstrap : MonoBehaviour
             Debug.Log("Bootstrap found player spawner with entity id: " + playerSpawnerEntityId.Value);
 
             SpatialOS.WorkerCommands.SendCommand(Spawner.Commands.SpawnPlayer.Descriptor,
-                                                 new SpawnPlayerRequest(SpatialOS.Configuration.EngineId,
+                                                 new SpawnPlayerRequest(SpatialOS.Configuration.WorkerId,
                                                  new Coordinates(0, 0, 0)),
                                                  playerSpawnerEntityId.Value,
                                                  result =>

@@ -1,0 +1,117 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 770 (ID=0x1184)
+    Vendor:   NVIDIA
+    VRAM:     2017 MB
+    Driver:   21.21.13.7653
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\Generated.Code.dll (this message is harmless)
+Loading C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\Generated.Code.dll into Unity Child Domain
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\Improbable.WorkerSdkCsharp.dll (this message is harmless)
+Loading C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\Improbable.WorkerSdkCsharp.dll into Unity Child Domain
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\Improbable.WorkerSdkCsharp.Framework.dll (this message is harmless)
+Loading C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\Improbable.WorkerSdkCsharp.Framework.dll into Unity Child Domain
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\protobuf-net.dll (this message is harmless)
+Loading C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\protobuf-net.dll into Unity Child Domain
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.Threading.dll (this message is harmless)
+Loading C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.Threading.dll into Unity Child Domain
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\Improbable.UnityDll.dll (this message is harmless)
+Loading C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\Improbable.UnityDll.dll into Unity Child Domain
+- Completed reload, in  0.041 seconds
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.Xml.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.201153 ms
+Command line build/worker/UnityClient@Windows/UnityClient@Windows.exe +assemblyName local_assembly +engineType UnityClient +infraServicesUrl http://127.0.0.1:21000 +appName gamingsuccess -logfile external-default-unityclient.log
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Command line parameter 'engineType' is obsolete please use 'workerType' instead.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+WorkerConfiguration settings
+AppName = gamingsuccess
+AssemblyName = local_assembly
+DeploymentId = 
+DeploymentTag = prod
+EngineId = UnityClientbcc6873a-096e-4a2b-915d-15c6f2653001
+EnginePlatform = UnityClient
+WorkerId = UnityClientbcc6873a-096e-4a2b-915d-15c6f2653001
+WorkerPlatform = UnityClient
+EntityCreationLimitPerFrame = 100
+InfraServiceUrl = http://127.0.0.1:21000
+Ip = 127.0.0.1
+LinkProtocol = RakNet
+LoginToken = 
+MetaData = {  }
+Port = 7777
+ProtocolLoggingOnStartup = False
+ProtocolLogPrefix = protocol-
+ProtocolLogMaxFileBytes = 104857600
+RaknetHeartbeatTimeoutMillis = 10000
+ReceiveQueueCapacity = 32768
+SendQueueCapacity = 16384
+ShowDebugTraces = False
+SteamToken = 
+TcpMultiplexLevel = 32
+UseInstrumentation = True
+UsePerInstanceAssetCache = True
+UsePrefabPooling = False
+LogDebugToSpatialOs = False
+LogAssertToSpatialOs = False
+LogWarningToSpatialOs = True
+LogErrorToSpatialOs = True
+LogExceptionToSpatialOs = True
+
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+ClientMetrics OS=Windows 10  (10.0.0) 64bit.
+Processor: type Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz, cores 8.
+Graphics: id 4484, vendor 4318, name NVIDIA GeForce GTX 770, size 2017.
+Memory: 16326.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\Mono.Security.dll (this message is harmless)
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.Configuration.dll (this message is harmless)
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.ServiceModel.dll (this message is harmless)
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.Runtime.Serialization.dll (this message is harmless)
+Bootstrap connected to SpatialOS, finding player spawner...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Bootstrap found player spawner with entity id: 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.Web.dll (this message is harmless)
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.IdentityModel.dll (this message is harmless)
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.Security.dll (this message is harmless)
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.Messaging.dll (this message is harmless)
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.Transactions.dll (this message is harmless)
+Platform assembly: C:\Users\icombinator\work\pirates10\workers\unity\build\worker\UnityClient@Windows\UnityClient@Windows_Data\Managed\System.Web.Services.dll (this message is harmless)
+Bootstrap created a player entity with ID: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: bc0 -> priority: 1 
+  Thread -> id: 14d4 -> priority: 1 
