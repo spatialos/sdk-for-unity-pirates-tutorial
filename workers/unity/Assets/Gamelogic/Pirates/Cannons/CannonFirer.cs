@@ -1,6 +1,4 @@
-﻿using Improbable.Ship;
-using Improbable.Unity.Visualizer;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Gamelogic.Pirates.Cannons
 {
@@ -13,6 +11,11 @@ namespace Assets.Gamelogic.Pirates.Cannons
         {
             // Cache entity's cannon gameobject
             cannon = gameObject.GetComponent<Cannon>();
+        }
+
+        private void FireCannon(Vector3 direction)
+        {
+            cannon.Fire(direction);
         }
     }
 }

@@ -1,0 +1,12 @@
+package improbable.global;
+
+type CreatePlayerRequest {}
+type CreatePlayerResponse {}
+
+component PlayerCreation {
+  // Component ID, unique within the project
+  id = 1001;
+
+  // Command the client sends to the PlayerCreator entity to request a Player entity is created
+  command CreatePlayerResponse create_player(CreatePlayerRequest);
+}

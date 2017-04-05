@@ -1,42 +1,43 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using Assets.EntityTemplates;
+using Assets.Gamelogic.EntityTemplates;
 using Improbable;
 using Improbable.Worker;
 using UnityEngine;
 using JetBrains.Annotations;
 using UnityEditor;
+using Assets.Gamelogic.Global;
 
-public class SnapshotMenu : MonoBehaviour
+namespace Assets.Editor 
 {
-    private static readonly string InitialWorldSnapshotPath = Application.dataPath +
-                                                              "/../../../snapshots/default.snapshot";
+	public class SnapshotMenu : MonoBehaviour
+	{
+		[MenuItem("Improbable/Snapshots/Generate Default Snapshot")]
+		[UsedImplicitly]
+		private static void GenerateDefaultSnapshot()
+		{
+			var snapshotEntities = new Dictionary<EntityId, SnapshotEntity>();
+			var currentEntityId = 1;
 
-    [MenuItem("Improbable/Snapshots/Generate Snapshot Programmatically")]
-    [UsedImplicitly]
-    private static void GenerateSnapshotProgrammatically()
-    {
-        var snapshotEntities = new Dictionary<EntityId, SnapshotEntity>();
-        var currentEntityId = 1;
+			snapshotEntities.Add(new EntityId(currentEntityId++), EntityTemplateFactory.CreateTerrainTemplate());
+			snapshotEntities.Add(new EntityId(currentEntityId++), EntityTemplateFactory.CreatePlayerCreatorTemplate());
 
-        snapshotEntities.Add(new EntityId(currentEntityId++), TerrainEntityTemplate.GenerateTerrainSnapshotEntityTemplate());
-        snapshotEntities.Add(new EntityId(currentEntityId++), PlayerSpawnerEntityTemplate.GeneratePlayerSpawnerSnapshotEntityTemplate());
+			SaveSnapshot(snapshotEntities);
+		}
 
-        SaveSnapshot(snapshotEntities);
-    }
+		private static void SaveSnapshot(IDictionary<EntityId, SnapshotEntity> snapshotEntities)
+		{
+			File.Delete(SimulationSettings.DefaultSnapshotPath);
+			var maybeError = Snapshot.Save(SimulationSettings.DefaultSnapshotPath, snapshotEntities);
 
-    private static void SaveSnapshot(IDictionary<EntityId, SnapshotEntity> snapshotEntities)
-    {
-        File.Delete(InitialWorldSnapshotPath);
-        var maybeError = Snapshot.Save(InitialWorldSnapshotPath, snapshotEntities);
-
-        if (maybeError.HasValue)
-        {
-            Debug.LogErrorFormat("Failed to generate initial world snapshot: {0}", maybeError.Value);
-        }
-        else
-        {
-            Debug.LogFormat("Successfully generated initial world snapshot at {0}", InitialWorldSnapshotPath);
-        }
-    }
+			if (maybeError.HasValue)
+			{
+				Debug.LogErrorFormat("Failed to generate initial world snapshot: {0}", maybeError.Value);
+			}
+			else
+			{
+				Debug.LogFormat("Successfully generated initial world snapshot at {0}", SimulationSettings.DefaultSnapshotPath);
+			}
+		}
+	}
 }

@@ -35,7 +35,7 @@
         "arguments": [
           "+assemblyName",
           "local_assembly",
-          "+engineType",
+          "+workerType",
           "UnityClient",
           "+infraServicesUrl",
           "http://127.0.0.1:21000",
@@ -52,7 +52,7 @@
           "--args",
           "+assemblyName",
           "local_assembly",
-          "+engineType",
+          "+workerType",
           "UnityClient",
           "+infraServicesUrl",
           "http://127.0.0.1:21000",

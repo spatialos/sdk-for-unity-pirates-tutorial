@@ -7,12 +7,12 @@ namespace Assets.Gamelogic.Pirates.Water
         private Transform ourTransform;
         private Transform cameraTransform;
 
-        void Start ()
+        void Start()
         {
             ourTransform = transform;
-            if (UnityEngine.Camera.main)
+            if (Camera.main)
             {
-                cameraTransform = UnityEngine.Camera.main.transform;
+                cameraTransform = Camera.main.transform;
             }
         }
 
@@ -31,9 +31,9 @@ namespace Assets.Gamelogic.Pirates.Water
             }
             else
             {
-                if (UnityEngine.Camera.main)
+                if (Camera.main)
                 {
-                    cameraTransform = UnityEngine.Camera.main.transform;
+                    cameraTransform = Camera.main.transform;
                 }
             }
         }

@@ -7,7 +7,7 @@ namespace Assets.Gamelogic.Pirates.Cannons
     public class DestroyCannonball : MonoBehaviour
     {
         public float SecondsUntilDestroy = 4f;
-		public Option<EntityId> firerEntityId = new Option<EntityId>();
+        public Option<EntityId> firerEntityId = new Option<EntityId>();
         private float spawnTime;
 
         void Start()

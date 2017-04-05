@@ -1,15 +1,16 @@
 using UnityEngine;
-using Improbable.General;
+using Improbable.Global;
 using Improbable.Math;
 using Improbable.Unity.Visualizer;
 
 namespace Assets.Gamelogic.Pirates.Behaviours
 {
-    // This MonoBehaviour will be enabled on both client and server-side workers
+    // Add this MonoBehaviour on both client and server-side workers
     public class TransformReceiver : MonoBehaviour
     {
         // Inject access to the entity's WorldTransform component
-        [Require] private WorldTransform.Reader WorldTransformReader;
+        [Require]
+        private WorldTransform.Reader WorldTransformReader;
 
         void OnEnable()
         {
@@ -24,7 +25,7 @@ namespace Assets.Gamelogic.Pirates.Behaviours
         void OnDisable()
         {
             // Deregister callback for when component changes
-            WorldTransformReader.ComponentUpdated.Add(OnComponentUpdated);
+            WorldTransformReader.ComponentUpdated.Remove(OnComponentUpdated);
         }
 
         // Callback for whenever one or more property of the WorldTransform component is updated
@@ -39,9 +40,13 @@ namespace Assets.Gamelogic.Pirates.Behaviours
             if (!WorldTransformReader.HasAuthority)
             {
                 if (update.position.HasValue)
+                {
                     transform.position = update.position.Value.ToVector3();
+                }
                 if (update.rotation.HasValue)
+                {
                     transform.rotation = Quaternion.Euler(0.0f, update.rotation.Value, 0.0f);
+                }
             }
         }
     }
@@ -50,7 +55,7 @@ namespace Assets.Gamelogic.Pirates.Behaviours
     {
         public static Vector3 ToVector3(this Coordinates coordinates)
         {
-            return new Vector3((float) coordinates.X, (float) coordinates.Y, (float) coordinates.Z);
+            return new Vector3((float)coordinates.X, (float)coordinates.Y, (float)coordinates.Z);
         }
     }
 }

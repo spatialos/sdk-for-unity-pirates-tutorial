@@ -1,0 +1,19 @@
+package improbable.player;
+
+type ClientDisconnectRequest{}
+type ClientDisconnectResponse{}
+
+type HeartbeatRequest{}
+type HeartbeatResponse{}
+
+component ClientConnection {
+  // Component ID, unique within the project
+  id = 1003;
+
+  // Number of client pings that can be missed before the client is assumed disconnected and the Player is deleted
+  uint32 timeout_beats_remaining = 1;
+  // Command the client uses to ping the server to indicate its connectivity
+  command HeartbeatResponse heartbeat(HeartbeatRequest);
+  // Command the client uses to indicated the user has exited the application
+  command ClientDisconnectResponse disconnect_client(ClientDisconnectRequest);
+}

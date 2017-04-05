@@ -1,4 +1,4 @@
-﻿using Improbable.Ship;
+﻿using Improbable.Global;
 using Improbable.Unity;
 using Improbable.Unity.Visualizer;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Assets.Gamelogic.Pirates.Behaviours
 {
-    // Enable this MonoBehaviour on client workers only
+    // Add this MonoBehaviour on client workers only
     [WorkerType(WorkerPlatform.UnityClient)]
     public class ScoreGUI : MonoBehaviour
     {
@@ -15,7 +15,8 @@ namespace Assets.Gamelogic.Pirates.Behaviours
          * so this MonoBehaviour will be enabled on the client's designated PlayerShip GameObject only and not on
          * the GameObject of other players' ships.
          */
-        [Require] private ShipControls.Writer ShipControlsWriter;
+        [Require]
+        private ClientAuthorityCheck.Writer ClientAuthorityCheckWriter;
 
         private Text totalPointsGUI;
 

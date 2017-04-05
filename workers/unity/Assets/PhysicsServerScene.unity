@@ -129,7 +129,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 400685688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361245ef8b4be284aa3e4b746081ecdf, type: 3}
+  m_Script: {fileID: 11500000, guid: 0826dccda99bdef4d9cc703995b570aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Configuration:
@@ -140,13 +140,13 @@ MonoBehaviour:
       LogWarningToSpatialOs: 1
       LogErrorToSpatialOs: 1
       LogExceptionToSpatialOs: 1
-      ProtocolLoggingOnStartup: 1
+      ProtocolLoggingOnStartup: 0
       ProtocolLogMaxFileBytes: 104857600
       ProtocolLogPrefix: protocol-
-      ShowDebugTraces: 1
+      ShowDebugTraces: 0
       UseInstrumentation: 1
     Networking:
-      Ip: 127.0.0.1
+      Ip: 
       LinkProtocol: 1
       Port: 7777
       RaknetHeartbeatTimeoutMillis: 60000
@@ -175,5 +175,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d504af5aa1f0ed4fad51a0dfde196c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseLocalPrefabs: 0
+  UseLocalPrefabs: 1
   LocalAssetDatabasePath: ../../build/assembly/

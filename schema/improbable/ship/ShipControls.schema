@@ -1,7 +1,7 @@
 package improbable.ship;
 
 component ShipControls {
-    // Schema file ID, unique within the project
+    // Component ID, unique within the project
     id = 1000;
 
     // Exclude this component from spatial finds

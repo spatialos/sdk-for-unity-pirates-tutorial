@@ -1,0 +1,6 @@
+package improbable.global;
+
+component ClientAuthorityCheck {
+  // Component ID, unique within the project
+  id = 1002;
+}
