@@ -1,4 +1,4 @@
-package improbable.global;
+package improbable.core;
 
 component ClientAuthorityCheck {
   // Component ID, unique within the project

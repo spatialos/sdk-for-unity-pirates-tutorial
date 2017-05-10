@@ -1,24 +1,25 @@
-﻿using Assets.Gamelogic.Global;
-using UnityEngine;
+﻿using Assets.Gamelogic.Core;
 using Assets.Gamelogic.Utils;
-using Improbable.Global;
+using Improbable.Core;
 using Improbable.Player;
 using Improbable.Unity;
 using Improbable.Unity.Core;
 using Improbable.Unity.Visualizer;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Gamelogic.Player
 {
     [WorkerType(WorkerPlatform.UnityClient)]
     public class SendClientConnection : MonoBehaviour
     {
-        [Require]
-        private ClientAuthorityCheck.Writer ClientAuthorityCheckWriter;
+        [Require] private ClientAuthorityCheck.Writer ClientAuthorityCheckWriter;
 
         private Coroutine heartbeatCoroutine;
 
         private void OnEnable()
         {
+            SceneManager.UnloadSceneAsync(BuildSettings.SplashScreenScene);
             heartbeatCoroutine = StartCoroutine(TimerUtils.CallRepeatedly(SimulationSettings.HeartbeatSendingIntervalSecs, SendHeartbeat));
         }
 

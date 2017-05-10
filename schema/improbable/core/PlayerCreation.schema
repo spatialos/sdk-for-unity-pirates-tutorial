@@ -1,4 +1,4 @@
-package improbable.global;
+package improbable.core;
 
 type CreatePlayerRequest {}
 type CreatePlayerResponse {}

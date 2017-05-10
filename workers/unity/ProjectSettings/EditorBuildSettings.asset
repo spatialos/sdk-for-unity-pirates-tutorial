@@ -6,6 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ClientScene.unity
-  - enabled: 0
-    path: Assets/PhysicsServerScene.unity
+    path: Assets/UnityClient.unity
+  - enabled: 1
+    path: Assets/SplashScreen.unity
+  - enabled: 1
+    path: Assets/UnityWorker.unity

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Assets.Gamelogic.Core;
 using Assets.Gamelogic.Utils;
 using Improbable.Unity.Core;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Gamelogic.Global;
 
 namespace Assets.Gamelogic.UI
 {
@@ -14,18 +14,11 @@ namespace Assets.Gamelogic.UI
         [SerializeField]
         private Button ConnectButton;
 
-        private static SplashScreenController instance;
-        private const string GameEntryGameObject = "GameEntry";
-
-        private void Awake()
-        {
-            instance = this;
-        }
 
         public void AttemptToConnect()
         {
             DisableConnectButton();
-            instance.AttemptConnection();
+            AttemptConnection();
         }
 
         private void DisableConnectButton()
@@ -36,12 +29,12 @@ namespace Assets.Gamelogic.UI
 
         private void AttemptConnection()
         {
-            if (!GameObject.Find(GameEntryGameObject).GetComponent<Bootstrap>())
+            Bootstrap bootstrap = FindObjectOfType<Bootstrap>();
+            if (!bootstrap)
             {
-                throw new Exception("Couldn't find Bootstrap script on GameEntry in ClientScene");
+                throw new Exception("Couldn't find Bootstrap script on GameEntry in UnityScene");
             }
-            Bootstrap bootstrap = GameObject.Find(GameEntryGameObject).GetComponent<Bootstrap>();
-            bootstrap.AttemptToConnectClient();
+            bootstrap.ConnectToClient();
             StartCoroutine(TimerUtils.WaitAndPerform(SimulationSettings.ClientConnectionTimeoutSecs, ConnectionTimeout));
         }
 
@@ -51,17 +44,8 @@ namespace Assets.Gamelogic.UI
             {
                 SpatialOS.Disconnect();
             }
-            instance.NotReadyWarning.SetActive(true);
+            NotReadyWarning.SetActive(true);
             ConnectButton.interactable = true;
-        }
-
-        public static void HideSplashScreen()
-        {
-            if (instance != null)
-            {
-                instance.NotReadyWarning.SetActive(false);
-                instance.gameObject.SetActive(false);
-            }
         }
     }
 }

@@ -1,4 +1,4 @@
-using Improbable.Global;
+using Improbable.Core;
 using Improbable.Unity;
 using Improbable.Unity.Visualizer;
 using UnityEngine;
@@ -18,14 +18,14 @@ namespace Assets.Gamelogic.Pirates.Behaviours
         private ClientAuthorityCheck.Writer ClientAuthorityCheckWriter;
 
         [SerializeField]
+        private Transform Camera;
+        [SerializeField]
         private Vector3 CameraOffset;
 
         public void OnEnable()
         {
-            var camera = Camera.main;
-            camera.transform.parent = transform;
-            camera.transform.localPosition = CameraOffset;
-            camera.transform.LookAt(transform.position + Vector3.up);
+            Camera.localPosition = CameraOffset;
+            Camera.LookAt(transform.position + Vector3.up);
         }
     }
 }

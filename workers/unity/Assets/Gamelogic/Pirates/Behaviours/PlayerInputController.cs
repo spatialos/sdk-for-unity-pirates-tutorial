@@ -1,8 +1,10 @@
+using Assets.Gamelogic.Core;
+using Assets.Gamelogic.UI;
 using Improbable.Ship;
 using Improbable.Unity;
 using Improbable.Unity.Visualizer;
 using UnityEngine;
-using Assets.Gamelogic.UI;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Gamelogic.Pirates.Behaviours
 {
@@ -20,7 +22,7 @@ namespace Assets.Gamelogic.Pirates.Behaviours
 
         void OnEnable()
         {
-            SplashScreenController.HideSplashScreen();
+            SceneManager.UnloadSceneAsync(BuildSettings.SplashScreenScene);
         }
 
         void Update()

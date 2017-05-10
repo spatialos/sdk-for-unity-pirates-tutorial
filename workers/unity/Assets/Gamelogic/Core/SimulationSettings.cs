@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Gamelogic.Global
+namespace Assets.Gamelogic.Core
 {
     public static class SimulationSettings
     {

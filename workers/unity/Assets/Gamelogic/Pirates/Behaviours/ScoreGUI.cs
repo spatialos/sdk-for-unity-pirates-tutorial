@@ -1,4 +1,4 @@
-﻿using Improbable.Global;
+﻿using Improbable.Core;
 using Improbable.Unity;
 using Improbable.Unity.Visualizer;
 using UnityEngine;

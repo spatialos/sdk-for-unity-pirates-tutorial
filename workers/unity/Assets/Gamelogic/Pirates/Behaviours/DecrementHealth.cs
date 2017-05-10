@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using Improbable.Unity;
+﻿using Improbable.Unity;
 using Improbable.Unity.Visualizer;
+using UnityEngine;
 
 namespace Assets.Gamelogic.Pirates.Behaviours
 {

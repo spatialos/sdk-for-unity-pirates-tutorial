@@ -1,7 +1,7 @@
-using UnityEngine;
-using Improbable.Global;
+using Improbable.Core;
 using Improbable.Math;
 using Improbable.Unity.Visualizer;
+using UnityEngine;
 
 namespace Assets.Gamelogic.Pirates.Behaviours
 {

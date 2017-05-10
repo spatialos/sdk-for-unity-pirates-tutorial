@@ -1,12 +1,12 @@
-﻿using Assets.Gamelogic.Global;
-using Improbable.Global;
+﻿using Assets.Gamelogic.Core;
+using Improbable.Core;
 using Improbable.Math;
 using Improbable.Player;
 using Improbable.Ship;
 using Improbable.Unity.Core.Acls;
 using Improbable.Worker;
-using Terrain = Improbable.Terrain.Terrain;
 using Random = UnityEngine.Random; // Used in lesson 8
+using Terrain = Improbable.Terrain.Terrain;
 
 namespace Assets.Gamelogic.EntityTemplates
 {
