@@ -17,15 +17,21 @@ namespace Assets.Gamelogic.Pirates.Behaviours
         [Require]
         private ClientAuthorityCheck.Writer ClientAuthorityCheckWriter;
 
-        [SerializeField]
         private Transform Camera;
         [SerializeField]
         private Vector3 CameraOffset;
 
         public void OnEnable()
         {
+            Camera = GameObject.FindObjectOfType<Camera>().transform;
+            Camera.SetParent(gameObject.transform);
             Camera.localPosition = CameraOffset;
             Camera.LookAt(transform.position + Vector3.up);
+        }
+
+        public void OnDisable()
+        {
+            Camera.SetParent(null);
         }
     }
 }

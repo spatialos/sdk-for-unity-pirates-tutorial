@@ -28,12 +28,18 @@ namespace Assets.Gamelogic.Shaders
 
                 for (int i = 0; i < materials.Length; i++)
                 {
-                    shaders[i] = materials[i].shader.name;
+                    if (materials[i] != null)
+                    {
+                        shaders[i] = materials[i].shader.name;
+                    }
                 }
 
                 for (int i = 0; i < materials.Length; i++)
                 {
-                    materials[i].shader = Shader.Find(shaders[i]);
+                    if (shaders[i] != null)
+                    {
+                        materials[i].shader = Shader.Find(shaders[i]);
+                    }
                 }
             }
         }

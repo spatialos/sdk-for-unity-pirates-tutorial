@@ -18,13 +18,18 @@ namespace Assets.Gamelogic.Pirates.Behaviours
         [Require]
         private ClientAuthorityCheck.Writer ClientAuthorityCheckWriter;
 
+        private GameObject scoreCanvasUI;
         private Text totalPointsGUI;
 
         private void Awake()
         {
-            totalPointsGUI = GameObject.Find("Canvas").GetComponentInChildren<Text>();
-            GameObject.Find("Background").GetComponent<Image>().color = Color.clear;
-            updateGUI(0);
+            scoreCanvasUI = GameObject.Find("ScoreCanvas");
+            if (scoreCanvasUI)
+            {
+                totalPointsGUI = scoreCanvasUI.GetComponentInChildren<Text>();
+                scoreCanvasUI.SetActive(false);
+                updateGUI(0);
+            }
         }
 
         private void OnEnable()
@@ -37,15 +42,17 @@ namespace Assets.Gamelogic.Pirates.Behaviours
 
         void updateGUI(int score)
         {
-            if (score > 0)
+            if (scoreCanvasUI)
             {
-                GameObject.Find("Background").GetComponent<Image>().color = Color.white;
-                var text = "Score: " + score.ToString() + " ";
-                totalPointsGUI.text = text;
-            }
-            else
-            {
-                GameObject.Find("Background").GetComponent<Image>().color = Color.clear;
+                if (score > 0)
+                {
+                    scoreCanvasUI.SetActive(true);
+                    totalPointsGUI.text = score.ToString();
+                }
+                else
+                {
+                    scoreCanvasUI.SetActive(false);
+                }
             }
         }
     }

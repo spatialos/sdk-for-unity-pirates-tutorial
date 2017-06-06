@@ -9,6 +9,7 @@ namespace Assets.Gamelogic.Pirates.Behaviours
     public class SinkingBehaviour : MonoBehaviour
     {
         public Animation SinkingAnimation;
+        public GameObject ShipWashVfx;
 
         private void OnEnable()
         {
@@ -16,6 +17,12 @@ namespace Assets.Gamelogic.Pirates.Behaviours
 
         private void OnDisable()
         {
+        }
+
+        private void VisualiseSinking()
+        {
+            SinkingAnimation.Play();
+            ShipWashVfx.SetActive(false);
         }
     }
 }

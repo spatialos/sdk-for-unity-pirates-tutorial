@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Spawner
   - Cannonball
+  - Island
+  - FlockMember
   layers:
   - Default
   - TransparentFX

@@ -1,9 +1,9 @@
+using System;
 using Improbable.Core;
 using Improbable.Math;
 using Improbable.Ship;
 using Improbable.Unity.Visualizer;
 using UnityEngine;
-using Improbable.Unity;
 
 namespace Assets.Gamelogic.Pirates.Behaviours
 {
@@ -30,6 +30,8 @@ namespace Assets.Gamelogic.Pirates.Behaviours
         private float MovementSpeed;
         [SerializeField]
         private float TurningSpeed;
+        [SerializeField]
+        private AudioSource boatMovementAudio;
 
         private void OnEnable()
         {
@@ -55,9 +57,16 @@ namespace Assets.Gamelogic.Pirates.Behaviours
             targetSpeed = Mathf.Clamp01(targetSpeed + delta * inputSpeed);
             currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Mathf.Clamp01(delta * 5f));
 
-            // Steering is affected by speed -- the slower the ship moves, the less maneuverable is the ship
-            targetSteering = Mathf.Clamp(targetSteering + delta * 6 * inputSteering * (0.1f + 0.9f * currentSpeed), -1f, 1f);
+            // Steering is affected by speed -- the slower the ship moves, the less maneuverable it becomes
+            targetSteering = Mathf.Clamp(targetSteering + delta * 6 * inputSteering * (0.1f + 0.9f * (currentSpeed + 0.1f)), -1f, 1f);
             currentSteering = Mathf.Lerp(currentSteering, targetSteering, delta * 5f);
+
+            // Update sailing sounds volume based on speed and turning - fast movement and turning causes louder sounds
+            if (boatMovementAudio)
+            {
+                float newVolume = currentSpeed*0.1f + Mathf.Abs(currentSteering)*0.3f;
+                boatMovementAudio.volume = newVolume;
+            }
         }
 
         // Move ship using local speed and steer value

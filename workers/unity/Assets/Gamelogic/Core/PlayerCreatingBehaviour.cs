@@ -1,7 +1,7 @@
 using Assets.Gamelogic.EntityTemplates;
 using Improbable;
-using Improbable.Entity.Component;
 using Improbable.Core;
+using Improbable.Entity.Component;
 using Improbable.Math;
 using Improbable.Unity;
 using Improbable.Unity.Core;

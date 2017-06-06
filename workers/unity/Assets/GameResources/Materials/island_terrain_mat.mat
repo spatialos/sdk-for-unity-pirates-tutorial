@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: island_terrain_mat
+  m_Shader: {fileID: 4800000, guid: b282cfa81ff2b3b49a7408754c2b3787, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _GRASS_CLR
+      second:
+        m_Texture: {fileID: 2800000, guid: fc46e3de19a8e544abfa55ca39f6caa4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _GRASS_GRADIENT
+      second:
+        m_Texture: {fileID: 2800000, guid: 37b8cf23fa555d048a1ab6be81930b04, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _GRASS_NMT
+      second:
+        m_Texture: {fileID: 2800000, guid: 0738ce0fae6a3ed4bb825afa7c3105f7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MASK
+      second:
+        m_Texture: {fileID: 2800000, guid: 4fe7b1c1fc86f954ebf039e3cc8484fb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 14de637d431c01644b3e69e77ade41e2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ROCK_CLR
+      second:
+        m_Texture: {fileID: 2800000, guid: 7fa53fa5be620ff469b3aac02daa0d59, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ROCK_GRADIENT
+      second:
+        m_Texture: {fileID: 2800000, guid: ab3d64a06cf48b04ab6beed238e93107, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ROCK_NMT
+      second:
+        m_Texture: {fileID: 2800000, guid: 09651891eeac2a34790bb22ebc78de0d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SAND_CLR
+      second:
+        m_Texture: {fileID: 2800000, guid: 799919b02b940c8488daf8292e93a506, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SAND_GRADIENT
+      second:
+        m_Texture: {fileID: 2800000, guid: b23c7d5be4302bb40a445bfce656d3e2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SAND_NMT
+      second:
+        m_Texture: {fileID: 2800000, guid: 319ae59d6e8eb384e8bd8ea67782b5a9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _Gloss
+      second: 0.5380463
+    - first:
+        name: _Metallic
+      second: 0
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}

@@ -12,13 +12,18 @@ namespace Assets.Gamelogic.Pirates.Cannons
 
         private float timeCannonsWereLastFired;
         private float cannonRechargeTime;
-        private Collider[] fireerColliders;
+        private Collider[] firerColliders;
         private float maxRange = 1f;
+
+        [SerializeField]
+        private AudioClip[] cannonFireAudioClips;
+        [SerializeField]
+        private AudioSource cannonFireAudioSource;
 
         void Start()
         {
             maxRange = CalculateMaxRange();
-            fireerColliders = gameObject.GetComponentsInChildren<Collider>();
+            firerColliders = gameObject.GetComponentsInChildren<Collider>();
         }
 
         public void Fire(Vector3 dir)
@@ -27,11 +32,12 @@ namespace Assets.Gamelogic.Pirates.Cannons
 
             if (CannonballPrefab != null)
             {
-                var cannonball = Instantiate(CannonballPrefab, transform.position, transform.rotation) as GameObject;
+                var cannonball = Instantiate(CannonballPrefab, transform.position+dir*0.6f, transform.rotation) as GameObject;
                 var entityId = gameObject.EntityId();
                 cannonball.GetComponent<DestroyCannonball>().firerEntityId = entityId;
                 EnsureCannonBallWillNotCollideWithFirer(cannonball);
                 FireCannonball(cannonball, dir, firingPitch);
+                cannonFireAudioSource.PlayOneShot(cannonFireAudioClips[Random.Range(0, cannonFireAudioClips.Length)]);
             }
         }
 
@@ -75,10 +81,10 @@ namespace Assets.Gamelogic.Pirates.Cannons
 
         private void EnsureCannonBallWillNotCollideWithFirer(GameObject cannonball)
         {
-            if (fireerColliders == null) return;
+            if (firerColliders == null) return;
             var col = cannonball.GetComponent<Collider>();
             if (col == null) return;
-            foreach (var c in fireerColliders)
+            foreach (var c in firerColliders)
             {
                 Physics.IgnoreCollision(c, col);
             }
