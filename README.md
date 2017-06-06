@@ -1,4 +1,7 @@
 # PiratesTutorial
+
+![Pirates Screenshot](pirates-screenshot.jpg)
+
 ---
 
 *Copyright Improbable Worlds Ltd, 2017*
