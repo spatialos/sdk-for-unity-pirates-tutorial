@@ -12,10 +12,5 @@ namespace Assets.Gamelogic.Pirates.Cannons
             // Cache entity's cannon gameobject
             cannon = gameObject.GetComponent<Cannon>();
         }
-
-        private void FireCannon(Vector3 direction)
-        {
-            cannon.Fire(direction);
-        }
     }
 }

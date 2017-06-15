@@ -47,7 +47,9 @@ namespace Assets.Gamelogic.Core
 
         private void CreatePlayer(string clientWorkerId, EntityId entityId)
         {
-            var playerEntityTemplate = EntityTemplateFactory.CreatePlayerShipTemplate(clientWorkerId, Coordinates.ZERO);
+            // Initial position is slightly randomised to prevent colliders interpenetrating at start
+            var initialPosition = new Coordinates(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+            var playerEntityTemplate = EntityTemplateFactory.CreatePlayerShipTemplate(clientWorkerId, initialPosition);
             SpatialOS.Commands.CreateEntity(PlayerCreationWriter, entityId, SimulationSettings.PlayerShipPrefabName, playerEntityTemplate)
                 .OnFailure(failure => OnFailedPlayerCreation(failure, clientWorkerId, entityId));
         }

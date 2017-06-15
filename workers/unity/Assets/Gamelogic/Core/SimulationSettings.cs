@@ -32,8 +32,7 @@ namespace Assets.Gamelogic.Core
         public static readonly float PlayerEntityCreationRetrySecs = 4;
 
         // Snapshot
-        public static readonly string DefaultSnapshotPath = Application.dataPath +
-                                                            "/../../../snapshots/default.snapshot";
+        public static readonly string DefaultRelativeSnapshotPath = "/../../../snapshots/default.snapshot";
 
         // Island placements (prefab name and coordinate location)
         public static readonly Dictionary<string, Coordinates> IslandsEntityPlacements =

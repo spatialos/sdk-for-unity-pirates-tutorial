@@ -22,7 +22,10 @@ namespace Assets.Gamelogic.Pirates.Behaviours
         private void VisualiseSinking()
         {
             SinkingAnimation.Play();
-            ShipWashVfx.SetActive(false);
+            if (ShipWashVfx != null)
+            {
+                ShipWashVfx.SetActive(false);
+            }
         }
     }
 }
