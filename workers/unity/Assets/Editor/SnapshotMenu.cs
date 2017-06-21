@@ -2,7 +2,6 @@
 using Assets.Gamelogic.EntityTemplates;
 using Improbable;
 using Improbable.Worker;
-using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -15,7 +14,6 @@ namespace Assets.Editor
     public class SnapshotMenu : MonoBehaviour
     {
         [MenuItem("Improbable/Snapshots/Generate Default Snapshot")]
-        [UsedImplicitly]
         private static void GenerateDefaultSnapshot()
         {
             var snapshotEntities = new Dictionary<EntityId, SnapshotEntity>();

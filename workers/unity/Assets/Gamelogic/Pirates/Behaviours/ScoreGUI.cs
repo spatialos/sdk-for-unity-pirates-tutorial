@@ -11,7 +11,7 @@ namespace Assets.Gamelogic.Pirates.Behaviours
     public class ScoreGUI : MonoBehaviour
     {
         /* 
-         * Client will only have write-access for their own designated PlayerShip entity's ShipControls component,
+         * Client will only have write-access for their own designated PlayerShip entity's ClientAuthorityCheck component,
          * so this MonoBehaviour will be enabled on the client's designated PlayerShip GameObject only and not on
          * the GameObject of other players' ships.
          */
