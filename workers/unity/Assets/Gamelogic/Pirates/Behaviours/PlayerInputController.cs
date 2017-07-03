@@ -1,5 +1,5 @@
 using Assets.Gamelogic.Core;
-using Assets.Gamelogic.UI;
+using Assets.Gamelogic.Pirates.Cannons;
 using Improbable.Ship;
 using Improbable.Unity;
 using Improbable.Unity.Visualizer;
@@ -20,8 +20,11 @@ namespace Assets.Gamelogic.Pirates.Behaviours
         [Require]
         private ShipControls.Writer ShipControlsWriter;
 
+        private CannonFirer cannonFirer;
+
         void OnEnable()
         {
+            cannonFirer = GetComponent<CannonFirer>();
             SceneManager.UnloadSceneAsync(BuildSettings.SplashScreenScene);
         }
 
@@ -30,6 +33,25 @@ namespace Assets.Gamelogic.Pirates.Behaviours
             ShipControlsWriter.Send(new ShipControls.Update()
                 .SetTargetSpeed(Mathf.Clamp01(Input.GetAxis("Vertical")))
                 .SetTargetSteering(Input.GetAxis("Horizontal")));
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                // Port broadside (Fire the left cannons)
+                if (cannonFirer != null)
+                {
+                    cannonFirer.AttemptToFireCannons(-transform.right);
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                // Starboard broadside (Fire the right cannons)
+                if (cannonFirer != null)
+                {
+                    cannonFirer.AttemptToFireCannons(transform.right);
+                }
+
+            }
         }
     }
 }

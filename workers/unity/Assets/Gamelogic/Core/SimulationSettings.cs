@@ -83,5 +83,8 @@ namespace Assets.Gamelogic.Core
         // Camera
         public static readonly string CameraRootName = "Main Camera";
         public static readonly string CameraName = "Camera";
+
+        // Tags
+        public static readonly string CannonballTag = "Cannonball";
     }
 }

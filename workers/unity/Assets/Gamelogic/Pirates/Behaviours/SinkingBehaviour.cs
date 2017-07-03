@@ -8,8 +8,10 @@ namespace Assets.Gamelogic.Pirates.Behaviours
     [WorkerType(WorkerPlatform.UnityClient)]
     public class SinkingBehaviour : MonoBehaviour
     {
-        public Animation SinkingAnimation;
-        public GameObject ShipWashVfx;
+        [SerializeField]
+        private Animation SinkingAnimation;
+
+        private GameObject ShipWashVfx;
 
         private void OnEnable()
         {

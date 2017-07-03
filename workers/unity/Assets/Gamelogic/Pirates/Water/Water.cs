@@ -8,19 +8,19 @@ namespace Assets.Gamelogic.Pirates.Water
     [ExecuteInEditMode] // Make water live-update even when not in play mode
     public class Water : MonoBehaviour
     {
-        public enum WaterMode
+        private enum WaterMode
         {
             Simple = 0,
             Reflective = 1,
             Refractive = 2,
         };
 
-        public WaterMode waterMode = WaterMode.Refractive;
-        public bool disablePixelLights = true;
-        public int textureSize = 256;
-        public float clipPlaneOffset = 0.07f;
-        public LayerMask reflectLayers = -1;
-        public LayerMask refractLayers = -1;
+        private WaterMode waterMode = WaterMode.Refractive;
+        private bool disablePixelLights = true;
+        private int textureSize = 256;
+        private float clipPlaneOffset = 0.07f;
+        private LayerMask reflectLayers = -1;
+        private LayerMask refractLayers = -1;
 
         private Dictionary<UnityEngine.Camera, UnityEngine.Camera> m_ReflectionCameras = new Dictionary<UnityEngine.Camera, UnityEngine.Camera>(); // Camera -> Camera table
         private Dictionary<UnityEngine.Camera, UnityEngine.Camera> m_RefractionCameras = new Dictionary<UnityEngine.Camera, UnityEngine.Camera>(); // Camera -> Camera table

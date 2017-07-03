@@ -10,8 +10,9 @@ GameObject:
   - component: {fileID: 421518}
   - component: {fileID: 5458276}
   - component: {fileID: 114000014128938252}
-  - component: {fileID: 114000014179605780}
   - component: {fileID: 114000012598071580}
+  - component: {fileID: 114000014179605780}
+  - component: {fileID: 114693494242983540}
   m_Layer: 0
   m_Name: PirateShip
   m_TagString: Untagged
@@ -344,7 +345,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SinkingAnimation: {fileID: 111887891072063252}
-  ShipWashVfx: {fileID: 0}
+--- !u!114 &114693494242983540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648c6ce45d49a5d40b33cf3c6fa4feeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136819055678707660
 CapsuleCollider:
   m_ObjectHideFlags: 1

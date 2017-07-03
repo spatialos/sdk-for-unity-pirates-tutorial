@@ -4,7 +4,9 @@ namespace Assets.Gamelogic.Pirates.Cannons
 {
     public class Cannon : MonoBehaviour
     {
-        public GameObject CannonballPrefab;
+        [SerializeField]
+        private GameObject CannonballPrefab;
+
         private float InitialVelocity = 15f;
         private float MaxPitch = 25f;
         private float MaxAimDeviationAngle = 5f;
