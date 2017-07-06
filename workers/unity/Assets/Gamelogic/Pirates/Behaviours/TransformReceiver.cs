@@ -1,5 +1,5 @@
+using Improbable;
 using Improbable.Core;
-using Improbable.Math;
 using Improbable.Unity.Visualizer;
 using UnityEngine;
 
@@ -8,54 +8,62 @@ namespace Assets.Gamelogic.Pirates.Behaviours
     // Add this MonoBehaviour on both client and server-side workers
     public class TransformReceiver : MonoBehaviour
     {
-        // Inject access to the entity's WorldTransform component
-        [Require]
-        private WorldTransform.Reader WorldTransformReader;
+        // Inject access to the entity's Position and Rotation components
+        [Require] private Position.Reader PositionReader;
+        [Require] private Rotation.Reader RotationReader;
 
         void OnEnable()
         {
-            // Initialize entity's gameobject transform from WorldTransform component values
-            transform.position = WorldTransformReader.Data.position.ToVector3();
-            transform.rotation = Quaternion.Euler(0.0f, WorldTransformReader.Data.rotation, 0.0f);
+            // Initialize entity's gameobject transform from Position and Rotation component values
+            transform.position = PositionReader.Data.coords.ToUnityVector();
+            transform.rotation = Quaternion.Euler(0.0f, RotationReader.Data.rotation, 0.0f);
 
             // Register callback for when component changes
-            WorldTransformReader.ComponentUpdated.Add(OnComponentUpdated);
+            PositionReader.ComponentUpdated.Add(OnPositionUpdated);
+            RotationReader.ComponentUpdated.Add(OnRotationUpdated);
         }
 
         void OnDisable()
         {
             // Deregister callback for when component changes
-            WorldTransformReader.ComponentUpdated.Remove(OnComponentUpdated);
+            PositionReader.ComponentUpdated.Remove(OnPositionUpdated);
+            RotationReader.ComponentUpdated.Remove(OnRotationUpdated);
         }
 
-        // Callback for whenever one or more property of the WorldTransform component is updated
-        void OnComponentUpdated(WorldTransform.Update update)
+        // Callback for whenever one or more property of the Position standard library component is updated
+        void OnPositionUpdated(Position.Update update)
         {
-            /* 
+            /*
              * Only update the transform if this component is on a worker which isn't authorative over the
-             * entity's WorldTransform component.
+             * entity's Position standard library component.
              * This synchronises the entity's local representation on the worker with that of the entity on
-             * whichever worker is authoritative over its WorldTransform and is responsible for its movement.
+             * whichever worker is authoritative over its Position and is responsible for its movement.
              */
-            if (!WorldTransformReader.HasAuthority)
+            if (!PositionReader.HasAuthority)
             {
-                if (update.position.HasValue)
+                if (update.coords.HasValue)
                 {
-                    transform.position = update.position.Value.ToVector3();
+                    transform.position = update.coords.Value.ToUnityVector();
                 }
+            }
+        }
+
+        // Callback for whenever one or more property of the Rotation component is updated
+        void OnRotationUpdated(Rotation.Update update)
+        {
+            /*
+             * Only update the transform if this component is on a worker which isn't authorative over the
+             * entity's Rotation component.
+             * This synchronises the entity's local representation on the worker with that of the entity on
+             * whichever worker is authoritative over its Rotation and is responsible for its movement.
+             */
+            if (!RotationReader.HasAuthority)
+            {
                 if (update.rotation.HasValue)
                 {
                     transform.rotation = Quaternion.Euler(0.0f, update.rotation.Value, 0.0f);
                 }
             }
-        }
-    }
-
-    public static class CoordinatesExtensions
-    {
-        public static Vector3 ToVector3(this Coordinates coordinates)
-        {
-            return new Vector3((float)coordinates.X, (float)coordinates.Y, (float)coordinates.Z);
         }
     }
 }

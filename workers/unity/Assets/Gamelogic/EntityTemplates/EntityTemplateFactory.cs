@@ -1,11 +1,13 @@
 ﻿using System; // Used in lesson 8
-using Assets.Gamelogic.Core; // Used in lesson 8
+using Assets.Gamelogic.Core;
 using Improbable.Core;
-using Improbable.Math;
 using Improbable.Player;
 using Improbable.Ship;
 using Improbable.Unity.Core.Acls;
 using Improbable.Worker;
+using Improbable;
+using Improbable.Unity.Entity;
+using UnityEngine;
 using Random = UnityEngine.Random; // Used in lesson 8
 
 namespace Assets.Gamelogic.EntityTemplates
@@ -14,89 +16,80 @@ namespace Assets.Gamelogic.EntityTemplates
     public static class EntityTemplateFactory
     {
         // Defines the template for the PlayerShip entity.
-        public static Entity CreatePlayerShipTemplate(string clientWorkerId, Coordinates initialPosition)
+        public static Entity CreatePlayerShipTemplate(string clientWorkerId, Vector3 initialPosition)
         {
-            var playerEntityTemplate = new Entity();
-
-            // Add components to the entity.
-            playerEntityTemplate.Add(new WorldTransform.Data(initialPosition, 0));
-            playerEntityTemplate.Add(new ClientConnection.Data(SimulationSettings.TotalHeartbeatsBeforeTimeout));
-            playerEntityTemplate.Add(new ShipControls.Data(0, 0));
-            playerEntityTemplate.Add(new ClientAuthorityCheck.Data());
-
-            // Sets the access permisisons for each component on the entity relative to the client or server worker ids.
-            var acl = Acl.Build()
-                .SetReadAccess(CommonRequirementSets.PhysicsOrVisual)
-                .SetWriteAccess<WorldTransform>(CommonRequirementSets.SpecificClientOnly(clientWorkerId))
-                .SetWriteAccess<ClientConnection>(CommonRequirementSets.PhysicsOnly)
-                .SetWriteAccess<ShipControls>(CommonRequirementSets.SpecificClientOnly(clientWorkerId))
-                .SetWriteAccess<ClientAuthorityCheck>(CommonRequirementSets.SpecificClientOnly(clientWorkerId));
-            playerEntityTemplate.SetAcl(acl);
+            var playerEntityTemplate = EntityBuilder.Begin()
+              // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
+              .AddPositionComponent(initialPosition, CommonRequirementSets.SpecificClientOnly(clientWorkerId))
+              .AddMetadataComponent(SimulationSettings.PlayerShipPrefabName)
+              .SetPersistence(false)
+              .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+              .AddComponent(new Rotation.Data(0), CommonRequirementSets.SpecificClientOnly(clientWorkerId))
+              .AddComponent(new ClientConnection.Data(SimulationSettings.TotalHeartbeatsBeforeTimeout), CommonRequirementSets.PhysicsOnly)
+              .AddComponent(new ShipControls.Data(0, 0), CommonRequirementSets.SpecificClientOnly(clientWorkerId))
+              .AddComponent(new ClientAuthorityCheck.Data(), CommonRequirementSets.SpecificClientOnly(clientWorkerId))
+              .Build();
 
             return playerEntityTemplate;
         }
 
         // Defines the template for the PlayerCreator entity.
-        public static SnapshotEntity CreatePlayerCreatorTemplate()
+        public static Entity CreatePlayerCreatorTemplate()
         {
-            var playerCreatorEntityTemplate = new SnapshotEntity { Prefab = SimulationSettings.PlayerCreatorPrefabName };
-
-            // Add components to the entity.
-            playerCreatorEntityTemplate.Add(new WorldTransform.Data(new Coordinates(-5, 0, 0), 0));
-            playerCreatorEntityTemplate.Add(new PlayerCreation.Data());
-
-            // Sets the access permisisons for each component on the entity relative to the client or server worker ids.
-            var acl = Acl.GenerateServerAuthoritativeAcl(playerCreatorEntityTemplate);
-            playerCreatorEntityTemplate.SetAcl(acl);
+            var playerCreatorEntityTemplate = EntityBuilder.Begin()
+              // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
+              .AddPositionComponent(new Vector3(-5, 0, 0), CommonRequirementSets.PhysicsOnly)
+              .AddMetadataComponent(SimulationSettings.PlayerCreatorPrefabName)
+              .SetPersistence(true)
+              .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+              .AddComponent(new PlayerCreation.Data(), CommonRequirementSets.PhysicsOnly)
+              .Build();
 
             return playerCreatorEntityTemplate;
         }
 
         // Template definition for a Island snapshot entity
-        static public SnapshotEntity GenerateIslandEntityTemplate(Coordinates initialPosition, string prefabName)
+        static public Entity GenerateIslandEntityTemplate(Vector3 initialPosition, string prefabName)
         {
-            var islandEntityTemplate = new SnapshotEntity { Prefab = prefabName };
-            // Define components attached to entity
-            islandEntityTemplate.Add(new WorldTransform.Data(new WorldTransformData(initialPosition, 0)));
-
-            // Grant component access permissions
-            var acl = Acl.Build()
-                .SetReadAccess(CommonRequirementSets.PhysicsOrVisual)
-                .SetWriteAccess<WorldTransform>(CommonRequirementSets.PhysicsOnly);
-            islandEntityTemplate.SetAcl(acl);
+            var islandEntityTemplate = EntityBuilder.Begin()
+              // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
+              .AddPositionComponent(initialPosition, CommonRequirementSets.PhysicsOnly)
+              .AddMetadataComponent(prefabName)
+              .SetPersistence(true)
+              .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+              .AddComponent(new Rotation.Data(0), CommonRequirementSets.PhysicsOnly)
+              .Build();
 
             return islandEntityTemplate;
         }
 
         // Template definition for a SmallFish snapshot entity
-        static public SnapshotEntity GenerateSmallFishTemplate(Coordinates initialPosition)
+        static public Entity GenerateSmallFishTemplate(Vector3 initialPosition)
         {
-            var smallFishTemplate = new SnapshotEntity { Prefab = SimulationSettings.SmallFishPrefabName };
-            // Define components attached to entity
-            smallFishTemplate.Add(new WorldTransform.Data(new WorldTransformData(initialPosition, 0)));
-
-            // Grant component access permissions
-            var acl = Acl.Build()
-                .SetReadAccess(CommonRequirementSets.PhysicsOrVisual)
-                .SetWriteAccess<WorldTransform>(CommonRequirementSets.PhysicsOnly);
-            smallFishTemplate.SetAcl(acl);
+            var smallFishTemplate = EntityBuilder.Begin()
+              // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
+              .AddPositionComponent(initialPosition, CommonRequirementSets.PhysicsOnly)
+              .AddMetadataComponent(SimulationSettings.SmallFishPrefabName)
+              .SetPersistence(true)
+              .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+              .AddComponent(new Rotation.Data(0), CommonRequirementSets.PhysicsOnly)
+              .Build();
 
             return smallFishTemplate;
         }
 
         // Template definition for a LargeFish snapshot entity
-        static public SnapshotEntity GenerateLargeFishTemplate(Coordinates initialPosition)
+        static public Entity GenerateLargeFishTemplate(Vector3 initialPosition)
         {
-            var largeFishTemplate = new SnapshotEntity { Prefab = SimulationSettings.LargeFishPrefabName };
-            // Define components attached to entity
-            largeFishTemplate.Add(new WorldTransform.Data(new WorldTransformData(initialPosition, 0)));
-
-            // Grant component access permissions
-            var acl = Acl.Build()
-                .SetReadAccess(CommonRequirementSets.PhysicsOrVisual)
-                .SetWriteAccess<WorldTransform>(CommonRequirementSets.PhysicsOnly);
-            largeFishTemplate.SetAcl(acl);
-
+            var largeFishTemplate = EntityBuilder.Begin()
+              // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
+              .AddPositionComponent(initialPosition, CommonRequirementSets.PhysicsOnly)
+              .AddMetadataComponent(SimulationSettings.LargeFishPrefabName)
+              .SetPersistence(true)
+              .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+              .AddComponent(new Rotation.Data(0), CommonRequirementSets.PhysicsOnly)
+              .Build();
+            
             return largeFishTemplate;
         }
     }

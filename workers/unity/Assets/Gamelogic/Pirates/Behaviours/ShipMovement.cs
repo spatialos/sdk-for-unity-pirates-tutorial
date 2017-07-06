@@ -1,6 +1,6 @@
 using System;
+using Improbable;
 using Improbable.Core;
-using Improbable.Math;
 using Improbable.Ship;
 using Improbable.Unity.Visualizer;
 using UnityEngine;
@@ -10,34 +10,29 @@ namespace Assets.Gamelogic.Pirates.Behaviours
     // Add this MonoBehaviour on both client and server-side workers
     public class ShipMovement : MonoBehaviour
     {
-        /* 
+        /*
          * An entity with this MonoBehaviour will have it enabled only for the single worker (whether client or server)
-         * which has write-access for its WorldTransform component.
+         * which has write-access for its Position and Rotation components.
          */
-        [Require]
-        private WorldTransform.Writer WorldTransformWriter;
-        [Require]
-        protected ShipControls.Reader ShipControlsReader;
+        [Require] private Position.Writer PositionWriter;
+        [Require] private Rotation.Writer RotationWriter;
+        [Require] protected ShipControls.Reader ShipControlsReader;
 
         private float targetSpeed; // [0..1]
         private float currentSpeed; // [0..1]
         private float targetSteering; // [-1..1]
         private float currentSteering; // [-1..1]
 
-        [SerializeField]
-        private Rigidbody myRigidbody;
-        [SerializeField]
-        private float MovementSpeed;
-        [SerializeField]
-        private float TurningSpeed;
-        [SerializeField]
-        private AudioSource boatMovementAudio;
+        [SerializeField] private Rigidbody myRigidbody;
+        [SerializeField] private float MovementSpeed;
+        [SerializeField] private float TurningSpeed;
+        [SerializeField] private AudioSource boatMovementAudio;
 
         private void OnEnable()
         {
-            // Initialize entity's gameobject transform from WorldTransform component values
-            transform.position = WorldTransformWriter.Data.position.ToVector3();
-            transform.rotation = Quaternion.Euler(0.0f, WorldTransformWriter.Data.rotation, 0.0f);
+            // Initialize entity's gameobject transform from Position and Rotation component values
+            transform.position = PositionWriter.Data.coords.ToUnityVector();
+            transform.rotation = Quaternion.Euler(0.0f, RotationWriter.Data.rotation, 0.0f);
             myRigidbody.inertiaTensorRotation = Quaternion.identity;
         }
 
@@ -100,9 +95,8 @@ namespace Assets.Gamelogic.Pirates.Behaviours
 
         private void SendPositionAndRotationUpdates()
         {
-            WorldTransformWriter.Send(new WorldTransform.Update()
-                .SetPosition(transform.position.ToCoordinates())
-                .SetRotation((uint)transform.rotation.eulerAngles.y));
+            PositionWriter.Send(new Position.Update().SetCoords(transform.position.ToCoordinates()));
+            RotationWriter.Send(new Rotation.Update().SetRotation((uint)transform.rotation.eulerAngles.y));
         }
     }
 

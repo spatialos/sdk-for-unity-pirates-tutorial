@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Improbable.Math;
+using Improbable;
 using UnityEngine;
 
 namespace Assets.Gamelogic.Core
@@ -35,29 +35,29 @@ namespace Assets.Gamelogic.Core
         public static readonly string DefaultRelativeSnapshotPath = "/../../../snapshots/default.snapshot";
 
         // Island placements (prefab name and coordinate location)
-        public static readonly Dictionary<string, Coordinates> IslandsEntityPlacements =
-            new Dictionary<string, Coordinates>
+        public static readonly Dictionary<string, Vector3> IslandsEntityPlacements =
+            new Dictionary<string, Vector3>
             {
-                {"Island_01", new Coordinates(10, -2.6, -35)},
-                {"Island_02", new Coordinates(73, -2.6, 0)},
-                {"Island_03", new Coordinates(-30, -2.6, 26)},
-                {"Island_04", new Coordinates(-70, -2.6, -40)},
-                {"Island_Small_01", new Coordinates(22, -2.6, 64)},
-                {"Island_Small_02", new Coordinates(-160, -2.6, -10)},
-                {"Island_Small_03", new Coordinates(-55, -2.6, 70)},
-                {"Island_Small_04", new Coordinates(-100, -2.6, 7)}
+                {"Island_01", new Vector3(10, -2.6f, -35)},
+                {"Island_02", new Vector3(73, -2.6f, 0)},
+                {"Island_03", new Vector3(-30, -2.6f, 26)},
+                {"Island_04", new Vector3(-70, -2.6f, -40)},
+                {"Island_Small_01", new Vector3(22, -2.6f, 64)},
+                {"Island_Small_02", new Vector3(-160, -2.6f, -10)},
+                {"Island_Small_03", new Vector3(-55, -2.6f, 70)},
+                {"Island_Small_04", new Vector3(-100, -2.6f, 7)}
             };
 
         // Small fish generation
         public static readonly string SmallFishPrefabName = "SmallFish";
         public static readonly int TotalFishInShoal = 10;
-        public static readonly List<Coordinates> FishShoalStartingLocations = new List<Coordinates>{new Coordinates(5, 0, 0), new Coordinates(-80, 0, 45) };
+        public static readonly List<Vector3> FishShoalStartingLocations = new List<Vector3>{new Vector3(5, 0, 0), new Vector3(-80, 0, 45) };
         public static readonly float ShoalRadius = 2f;
         public static readonly float ShoalMinDepth = -0.5f;
         public static readonly float ShoalMaxDepth = -1f;
         // Large fish generation
         public static readonly string LargeFishPrefabName = "LargeFish";
-        public static readonly List<Coordinates> LargeFishStartingLocations = new List<Coordinates> { new Coordinates(-10, -1.5f, 0) };
+        public static readonly List<Vector3> LargeFishStartingLocations = new List<Vector3> { new Vector3(-10, -1.5f, 0) };
 
         // Creature steering behaviours
         public static readonly float DefaultInfluenceStrength = 1f;

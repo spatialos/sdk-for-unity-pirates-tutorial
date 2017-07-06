@@ -1,0 +1,9 @@
+package improbable.core;
+
+component Rotation {
+  // Component ID, unique within the project
+  id = 1004;
+
+  // Entity's rotation within the project
+    uint32 rotation = 2;
+}

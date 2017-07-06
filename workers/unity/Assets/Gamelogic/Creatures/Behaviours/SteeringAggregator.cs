@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.Gamelogic.Core;
+using Improbable;
 using Improbable.Core;
 using UnityEngine;
 using Improbable.Unity;
@@ -13,10 +14,12 @@ namespace Assets.Gamelogic.Pirates.Behaviours.Creatures
     {
         /*
          * An entity with this MonoBehaviour will only be enabled for the single UnityWorker worker
-         * which has write-access for its WorldTransform component.
+         * which has write-access for its Position component.
          */
         [Require]
-        private WorldTransform.Writer WorldTransformWriter;
+        private Position.Writer PositionWriter;
+        [Require]
+        private Rotation.Writer RotationWriter;
 
         private Vector3 desiredHeading;
         private List<SteeringInfluence> steeringInfluences = new List<SteeringInfluence>();
@@ -24,9 +27,9 @@ namespace Assets.Gamelogic.Pirates.Behaviours.Creatures
         protected void OnEnable()
         {
             desiredHeading = transform.forward;
-            // Initialize entity's gameobject transform from WorldTransform component values
-            transform.position = WorldTransformWriter.Data.position.ToVector3();
-            transform.rotation = Quaternion.Euler(0.0f, WorldTransformWriter.Data.rotation, 0.0f);
+            // Initialize entity's gameobject transform from Position component values
+            transform.position = PositionWriter.Data.coords.ToUnityVector();
+            transform.rotation = Quaternion.Euler(0.0f, RotationWriter.Data.rotation, 0.0f);
         }
 
         public void AddSteeringInfluence(SteeringInfluence steeringInfluence)
@@ -52,8 +55,8 @@ namespace Assets.Gamelogic.Pirates.Behaviours.Creatures
             transform.Translate(transform.forward * SimulationSettings.SteeringMovementSpeed * Time.deltaTime, Space.World);
 
             // Synchronise transform across all workers
-            WorldTransformWriter.Send(new WorldTransform.Update().SetPosition(transform.position.ToCoordinates())
-                                                                 .SetRotation((uint)transform.rotation.eulerAngles.y));
+            PositionWriter.Send(new Position.Update().SetCoords(transform.position.ToCoordinates()));
+            RotationWriter.Send(new Rotation.Update().SetRotation((uint)transform.rotation.eulerAngles.y));
         }
 
         private void InfluenceDesiredHeading()

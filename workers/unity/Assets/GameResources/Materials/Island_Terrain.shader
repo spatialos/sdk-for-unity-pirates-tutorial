@@ -44,7 +44,7 @@ Shader "Shader Forge/Island_Terrain" {
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles gles3 metal 
             #pragma target 3.0
             uniform float _Metallic;
             uniform sampler2D _MASK; uniform float4 _MASK_ST;
@@ -226,7 +226,7 @@ Shader "Shader Forge/Island_Terrain" {
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles gles3 metal 
             #pragma target 3.0
             uniform float _Metallic;
             uniform sampler2D _MASK; uniform float4 _MASK_ST;
@@ -351,7 +351,7 @@ Shader "Shader Forge/Island_Terrain" {
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles gles3 metal 
             #pragma target 3.0
             uniform float _Metallic;
             uniform sampler2D _MASK; uniform float4 _MASK_ST;

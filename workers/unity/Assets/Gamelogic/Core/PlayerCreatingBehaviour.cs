@@ -2,7 +2,6 @@ using Assets.Gamelogic.EntityTemplates;
 using Improbable;
 using Improbable.Core;
 using Improbable.Entity.Component;
-using Improbable.Math;
 using Improbable.Unity;
 using Improbable.Unity.Core;
 using Improbable.Unity.Visualizer;
@@ -13,8 +12,7 @@ namespace Assets.Gamelogic.Core
     [WorkerType(WorkerPlatform.UnityWorker)]
     public class PlayerCreatingBehaviour : MonoBehaviour
     {
-        [Require]
-        private PlayerCreation.Writer PlayerCreationWriter;
+        [Require] private PlayerCreation.Writer PlayerCreationWriter;
 
         private void OnEnable()
         {
@@ -35,7 +33,7 @@ namespace Assets.Gamelogic.Core
         private void CreatePlayerWithReservedId(string clientWorkerId)
         {
             SpatialOS.Commands.ReserveEntityId(PlayerCreationWriter)
-                .OnSuccess(reservedEntityId => CreatePlayer(clientWorkerId, reservedEntityId))
+                .OnSuccess(result => CreatePlayer(clientWorkerId, result.ReservedEntityId))
                 .OnFailure(failure => OnFailedReservation(failure, clientWorkerId));
         }
 
@@ -48,9 +46,9 @@ namespace Assets.Gamelogic.Core
         private void CreatePlayer(string clientWorkerId, EntityId entityId)
         {
             // Initial position is slightly randomised to prevent colliders interpenetrating at start
-            var initialPosition = new Coordinates(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+            var initialPosition = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
             var playerEntityTemplate = EntityTemplateFactory.CreatePlayerShipTemplate(clientWorkerId, initialPosition);
-            SpatialOS.Commands.CreateEntity(PlayerCreationWriter, entityId, SimulationSettings.PlayerShipPrefabName, playerEntityTemplate)
+            SpatialOS.Commands.CreateEntity(PlayerCreationWriter, entityId, playerEntityTemplate)
                 .OnFailure(failure => OnFailedPlayerCreation(failure, clientWorkerId, entityId));
         }
 
