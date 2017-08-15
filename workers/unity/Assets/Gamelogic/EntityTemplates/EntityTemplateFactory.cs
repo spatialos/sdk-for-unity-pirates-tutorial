@@ -1,5 +1,4 @@
-﻿using System; // Used in lesson 8
-using Assets.Gamelogic.Core;
+﻿using Assets.Gamelogic.Core;
 using Improbable.Core;
 using Improbable.Player;
 using Improbable.Ship;
@@ -7,8 +6,9 @@ using Improbable.Unity.Core.Acls;
 using Improbable.Worker;
 using Improbable;
 using Improbable.Unity.Entity;
+using Random = UnityEngine.Random; // Used in lesson 2
+using System; // Used in lesson 2
 using UnityEngine;
-using Random = UnityEngine.Random; // Used in lesson 8
 
 namespace Assets.Gamelogic.EntityTemplates
 {

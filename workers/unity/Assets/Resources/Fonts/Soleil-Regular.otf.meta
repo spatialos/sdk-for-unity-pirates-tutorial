@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: cd93ddfd630f4a84e827fa9509ec9b1a
+timeCreated: 1501237111
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Soleil
+  fontNames:
+  - Soleil
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

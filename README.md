@@ -4,7 +4,7 @@
 
 ---
 
-*Copyright Improbable Worlds Ltd, 2017*
+*Copyright (C) 2017 Improbable Worlds Limited. All rights reserved.*
 
 - *Accompanying tutorial*: [https://spatialos.improbable.io/docs/reference/latest/tutorials/pirates/lesson1](https://spatialos.improbable.io/docs/reference/latest/tutorials/pirates/lesson1)
 

@@ -25,7 +25,6 @@ namespace Assets.Gamelogic.Pirates.Behaviours
         void OnEnable()
         {
             cannonFirer = GetComponent<CannonFirer>();
-            SceneManager.UnloadSceneAsync(BuildSettings.SplashScreenScene);
         }
 
         void Update()

@@ -13,18 +13,22 @@ namespace Assets.Gamelogic.UI
         private GameObject NotReadyWarning;
         [SerializeField]
         private Button ConnectButton;
+        [SerializeField]
+        private GameObject Spinner;
 
 
         public void AttemptToConnect()
         {
-            DisableConnectButton();
-            AttemptConnection();
-        }
-
-        private void DisableConnectButton()
-        {
+            // Disable connect button
             ConnectButton.interactable = false;
-            ConnectButton.GetComponent<CursorHoverEffect>().ShowDefaultCursor();
+
+            // Hide warning if already shown
+            NotReadyWarning.SetActive(false);
+
+            // Start loading spinner
+            Spinner.SetActive(true);
+
+            AttemptConnection();
         }
 
         private void AttemptConnection()
@@ -35,6 +39,9 @@ namespace Assets.Gamelogic.UI
                 throw new Exception("Couldn't find Bootstrap script on GameEntry in UnityScene");
             }
             bootstrap.ConnectToClient();
+
+            // In case the client connection is successful this coroutine is destroyed as part of unloading
+            // the splash screen so ConnectionTimeout won't be called
             StartCoroutine(TimerUtils.WaitAndPerform(SimulationSettings.ClientConnectionTimeoutSecs, ConnectionTimeout));
         }
 
@@ -44,6 +51,8 @@ namespace Assets.Gamelogic.UI
             {
                 SpatialOS.Disconnect();
             }
+
+            Spinner.SetActive(false);
             NotReadyWarning.SetActive(true);
             ConnectButton.interactable = true;
         }
