@@ -19,7 +19,7 @@ namespace Assets.Gamelogic.Core
 
         // Heartbeats
         public static readonly float HeartbeatCheckIntervalSecs = 5;
-        public static readonly uint TotalHeartbeatsBeforeTimeout = 3;
+        public static readonly uint TotalHeartbeatsBeforeTimeout = 10;
         public static readonly float HeartbeatSendingIntervalSecs = 5;
 
         // Pirates (used in lesson 8 of the tutorial!)
