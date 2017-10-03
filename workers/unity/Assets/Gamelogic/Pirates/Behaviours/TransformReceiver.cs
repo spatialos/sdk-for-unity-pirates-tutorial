@@ -2,6 +2,7 @@ using Improbable;
 using Improbable.Core;
 using Improbable.Unity.Visualizer;
 using UnityEngine;
+using Improbable.Worker;
 
 namespace Assets.Gamelogic.Pirates.Behaviours
 {
@@ -39,7 +40,7 @@ namespace Assets.Gamelogic.Pirates.Behaviours
              * This synchronises the entity's local representation on the worker with that of the entity on
              * whichever worker is authoritative over its Position and is responsible for its movement.
              */
-            if (!PositionReader.HasAuthority)
+			if (PositionReader.Authority == Authority.NotAuthoritative)
             {
                 if (update.coords.HasValue)
                 {
@@ -57,7 +58,7 @@ namespace Assets.Gamelogic.Pirates.Behaviours
              * This synchronises the entity's local representation on the worker with that of the entity on
              * whichever worker is authoritative over its Rotation and is responsible for its movement.
              */
-            if (!RotationReader.HasAuthority)
+			if (RotationReader.Authority == Authority.NotAuthoritative)
             {
                 if (update.rotation.HasValue)
                 {

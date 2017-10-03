@@ -11,8 +11,6 @@ namespace Assets.Gamelogic.Pirates.Behaviours
         [SerializeField]
         private Animation SinkingAnimation;
 
-        private GameObject ShipWashVfx;
-
         private void OnEnable()
         {
         }
@@ -24,10 +22,6 @@ namespace Assets.Gamelogic.Pirates.Behaviours
         private void VisualiseSinking()
         {
             SinkingAnimation.Play();
-            if (ShipWashVfx != null)
-            {
-                ShipWashVfx.SetActive(false);
-            }
         }
     }
 }

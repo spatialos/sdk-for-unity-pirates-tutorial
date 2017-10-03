@@ -17,7 +17,6 @@ namespace Assets.Gamelogic.Core
         // Called when the Play button is pressed in Unity.
         public void Start()
         {
-            SceneManager.LoadScene(BuildSettings.SplashScreenScene, LoadSceneMode.Additive);
 
             SpatialOS.ApplyConfiguration(Configuration);
 
@@ -34,6 +33,7 @@ namespace Assets.Gamelogic.Core
                 case WorkerPlatform.UnityClient:
                     Application.targetFrameRate = SimulationSettings.TargetClientFramerate;
                     SpatialOS.OnConnected += CreatePlayer;
+                    SceneManager.LoadScene(BuildSettings.SplashScreenScene, LoadSceneMode.Additive);
                     break;
             }
         }
