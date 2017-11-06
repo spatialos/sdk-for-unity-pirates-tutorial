@@ -64,16 +64,19 @@ namespace Assets.Editor
         {
             var snapshotPath = Application.dataPath + SimulationSettings.DefaultRelativeSnapshotPath;
             File.Delete(snapshotPath);
-            var maybeError = Snapshot.Save(snapshotPath, snapshotEntities);
-
-            if (maybeError.HasValue)
+            using (SnapshotOutputStream stream = new SnapshotOutputStream(snapshotPath))
             {
-	            Debug.LogErrorFormat("Failed to generate initial world snapshot: {0}", maybeError.Value);
+                foreach (var kvp in snapshotEntities)
+                {
+                    var error = stream.WriteEntity(kvp.Key, kvp.Value);
+                    if (error.HasValue)
+                        {
+                            Debug.LogErrorFormat("Failed to generate initial world snapshot: {0}", error.Value);
+                            return;
+                        }
+                }
             }
-            else
-            {
-	            Debug.LogFormat("Successfully generated initial world snapshot at {0}", snapshotPath);
-            }
+                Debug.LogFormat("Successfully generated initial world snapshot at {0}", snapshotPath);
         }
     }
 }
