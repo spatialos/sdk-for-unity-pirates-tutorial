@@ -3,9 +3,10 @@
 --- !u!129 &1
 PlayerSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 10
+  serializedVersion: 14
   productGUID: ee129e300e71f7e44b4616b3c2b3be02
   AndroidProfiler: 0
+  AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 0
   targetDevice: 2
   useOnDemandResources: 0
@@ -462,6 +463,9 @@ PlayerSettings:
   incrementalIl2cppBuild:
     iOS: 0
   additionalIl2CppArgs: 
+  scriptingRuntimeVersion: 0
+  apiCompatibilityLevelPerPlatform:
+    Standalone: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Client
