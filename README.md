@@ -24,3 +24,7 @@ You can follow the [accompanying tutorial](https://spatialos.improbable.io/docs/
 To build this project, you will need access to the [SpatialOS SDK](https://spatialos.improbable.io/get-spatialos), and to have set it up on your machine (see the setup guides for [Windows](https://spatialos.improbable.io/docs/reference/latest/setup-spatialos/win) or [Mac](https://spatialos.improbable.io/docs/reference/latest/setup-spatialos/mac)).
 
 If you run into problems, or want to give us feedback, please visit the [SpatialOS forums](https://forums.improbable.io/).
+
+## Prerequisite
+
+Unity 2017.3.0 or above is required to build this project. 
