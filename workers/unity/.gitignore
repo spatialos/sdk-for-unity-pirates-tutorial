@@ -1,14 +1,11 @@
 # Improbable Unity Ignores
 .spatialos/
 spatialos_worker_packages.json
-build.json
 .invoke.log
 zip_toolbelt.log
 external-default-unityclient.log
 external-default-unityworker.log
-Improbable.meta
 Assets/Improbable
-Assets/Plugins/Improbable
 Assets/Plugins/x86/Improbable
 Assets/Plugins/x86.meta
 Assets/Plugins/x86_64/Improbable
