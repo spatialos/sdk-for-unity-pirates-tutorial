@@ -6,7 +6,7 @@
 
 *Copyright (C) 2017 Improbable Worlds Limited. All rights reserved.*
 
-- *Accompanying tutorial*: [https://github.com/spatialos/UnitySDK/blob/master/docs/tutorials/pirates/overview.md](https://spatialos.improbable.io/docs/reference/latest/tutorials/pirates/lesson1)
+- *Accompanying tutorial*: https://github.com/spatialos/UnitySDK/blob/master/docs/tutorials/pirates/overview.md
 
 - *GitHub repository*: [github.com/spatialos/PiratesTutorial](https://github.com/spatialos/PiratesTutorial)
 
@@ -21,7 +21,7 @@ You can follow the [accompanying tutorial](https://github.com/spatialos/UnitySDK
 * Learn how to set up and use SpatialOS.
 * Add new functionality to the game.
 
-To build this project, you will need access to the [SpatialOS SDK](https://spatialos.improbable.io/get-spatialos), and to have set it up on your machine (see the setup guides for [Windows](https://spatialos.improbable.io/docs/reference/latest/shared/get-started/setup/win) or [Mac](https://docs.improbable.io/reference/latest/shared/get-started/setup/mac)).
+To build this project, you will need access to the [SpatialOS SDK](https://spatialos.improbable.io/get-spatialos), and to have set it up on your machine (see the setup guides for [Windows](https://spatialos.improbable.io/docs/reference/13.0/shared/get-started/setup/win) or [Mac](https://docs.improbable.io/reference/13.0/shared/get-started/setup/mac)).
 
 If you run into problems, or want to give us feedback, please visit the [SpatialOS forums](https://forums.improbable.io/).
 
