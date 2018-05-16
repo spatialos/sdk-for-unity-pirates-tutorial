@@ -6,7 +6,7 @@
 
 *Copyright (C) 2017 Improbable Worlds Limited. All rights reserved.*
 
-- *Accompanying tutorial*: https://github.com/spatialos/UnitySDK/blob/master/docs/tutorials/pirates/overview.md
+- *Accompanying tutorial*: [github.com/spatialos/UnitySDK/blob/master/docs/tutorials/pirates/overview.md](https://github.com/spatialos/UnitySDK/blob/master/docs/tutorials/pirates/overview.md)
 
 - *GitHub repository*: [github.com/spatialos/PiratesTutorial](https://github.com/spatialos/PiratesTutorial)
 
